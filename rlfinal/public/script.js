@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
     const storyList = document.getElementById("storyList");
 
-    // Fetch stories from the server/
+    // Fetch stories from the server
     fetch('/api/stories')
         .then(response => response.json())
-        .then(stories => {
+        .then(data => {
+            const stories = data.stories; // Assuming 'stories' is the property name
             stories.forEach(story => {
                 const card = document.createElement('div');
                 card.classList.add('card');
