@@ -1,13 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-mongoose.set('strictQuery', false);
-// Connect to MongoDB
-mongoose.connect('mongodb+srv://mcswordyt:1234@cluster0.vgkl87j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error('Could not connect to MongoDB', err));
 
-// Define schema for stories
+mongoose.connect('mongodb+srv://mcswordyt:1234@cluster0.vgkl87j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('Connected to MongoDB Atlas'))
+    .catch(err => console.error('Could not connect to MongoDB Atlas', err));
+
 const storySchema = new mongoose.Schema({
     title: String,
     content: String,
@@ -16,7 +14,6 @@ const storySchema = new mongoose.Schema({
 
 const Story = mongoose.model('Story', storySchema);
 
-// Route to fetch all stories
 app.get('/api/stories', async (req, res) => {
     try {
         const stories = await Story.find();
@@ -27,7 +24,6 @@ app.get('/api/stories', async (req, res) => {
     }
 });
 
-// Route to fetch an individual story by ID
 app.get('/api/stories/:id', async (req, res) => {
     try {
         const story = await Story.findById(req.params.id);
@@ -48,7 +44,6 @@ app.get('/about', (req, res) => {
 app.get('/contacts', (req, res) => {
     res.sendFile(__dirname + '/public/contacts.html');
 });
-
 
 const port = process.env.PORT || 3000;
 app.use(express.static('public'));
