@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 mongoose.set('strictQuery', false);
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/skazki', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://mcswordyt:1234@cluster0.vgkl87j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Could not connect to MongoDB', err));
 
