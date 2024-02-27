@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-
+mongoose.set('strictQuery', false);
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/skazki', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
